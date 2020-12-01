@@ -1,0 +1,39 @@
+appsettings:
+  run-migration: true
+  hostname: ${HOSTNAME:#{'localhost'}}
+  grpc:
+    port: 6504
+service-name: chatbot
+spring:
+  datasource:
+    url: "jdbc:postgresql://127.0.0.1:5432/chatbot"
+    username: "chatbot"
+    password: "chatbot"
+    driver-class-name: "org.postgresql.Driver"
+  jpa:
+    # Show or not log for each sql query
+    show-sql: false
+    # Hibernate ddl auto (create, create-drop, update): with "create-drop" the database
+    # schema will be automatically created afresh for every start of application
+    hibernate.ddl-auto: "none"
+    properties:
+      hibernate:
+        jdbc.lob.non_contextual_creation: true
+        # Allows Hibernate to generate SQL optimized for a particular DBMS
+        dialect: "org.hibernate.dialect.PostgreSQLDialect"
+    # Naming strategy
+    hibernate:
+      naming:
+        implicit-strategy: "org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl"
+        physical-strategy: "org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy"
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-create.xml
+    enabled: ${appsettings.run-migration}
+
+chatbot:
+  telegram:
+    url: "https://api.telegram.org/"
+    token: "test"
+    default-chat-id: "123"
+  schedule:
+    check-updates: "0/10 * * * * *"
