@@ -1,4 +1,4 @@
-# Service for working with messengers: telegram, whatsapp and etc.
+# Simple chatbot working with telegram api 
 Service name: simple-chatbot
 
 Today implemented only telegram.
@@ -18,7 +18,7 @@ The bot can do basic things:
 * simpleChatBot: Меня разработал Дмитрий
 * Дмитрий: Что ты можешь делать?
 * simpleChatBot: Я могу здароваться и представлять себя и автора.
-* Дмитрий Савоськин: А еще что?
+* Дмитрий: А еще что?
 * simpleChatBot: На этот вопрос, у меня пока нет ответа.
 
 * [Сборка и запуск](docs/BuildAndRun.md)
